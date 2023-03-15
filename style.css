@@ -1,0 +1,79 @@
+@import url("https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap");
+
+* {
+	background-color: aliceblue;
+	font-family: "Share Tech Mono", monospace;
+	margin: 0;
+	padding: 0.5rem;
+}
+
+h1 {
+	color: cornflowerblue;
+	font-size: 5rem;
+}
+
+h3 {
+	color: cornflowerblue;
+	font-size: 2rem;
+}
+
+.center {
+	text-align: center;
+}
+
+.text-frame {
+	align-items: center;
+	border-radius: 10px;
+	border: 1px solid cornflowerblue;
+	display: flex;
+	font-size: 2rem;
+	justify-content: center;
+	margin: 2rem;
+	padding: 2rem;
+}
+
+iframe {
+	background-color: transparent;
+	border-radius: 20px;
+	border: 1px solid black;
+	height: 50vh;
+	padding: 2rem;
+	width: 80%;
+}
+.message {
+	background-color: lightgreen;
+	border-radius: 10px;
+	border: 0;
+	font-size: 1.75rem;
+	margin: 0;
+	padding: 1.5rem;
+	text-align: center;
+}
+
+.container {
+	align-items: center;
+	background-color: transparent;
+	bottom: 3rem;
+	display: flex;
+	justify-content: center;
+	position: sticky;
+	top: 0;
+	opacity: 0;
+}
+
+@keyframes show_message {
+	0% {
+		opacity: 0;
+	}
+	50% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+.animate {
+	animation: show_message 3s;
+	animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+}
