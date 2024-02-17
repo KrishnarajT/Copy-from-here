@@ -1,1 +1,79 @@
-Whatever you wanna copy will show up here.
+import datetime
+import tkinter as tk
+
+# Define the pastel color scheme
+bg_color = "#F2EFEA"
+fg_color = "#6D6A75"
+button_color = "#F2D4CB"
+button_hover_color = "#F2D4CB"
+
+def calculate_age():
+    # get the current date
+    try: 
+        today = datetime.date.today()
+        # get the date of birth from the input fields
+        day = int(day_entry.get())
+        month = int(month_entry.get())
+        year = int(year_entry.get())
+        print(day, month, year)
+        dob = datetime.date(year, month, day)
+        # calculate the difference between the current date and date of birth
+        age = today - dob
+        # calculate age in years and months
+        years = int(age.days / 365.25)
+        months = int((age.days % 365.25) / 30.44)
+        # update the label with the age
+        age_label.config(text="You are {} years and {} months old.".format(years, months))
+    except: 
+        age_label.config(text="Please enter a valid date.")
+
+def reset_fields():
+    # clear the input fields and age label
+    day_entry.delete(0, tk.END)
+    month_entry.delete(0, tk.END)
+    year_entry.delete(0, tk.END)
+    age_label.config(text="")
+
+# Create a new tkinter window
+root = tk.Tk()
+root.title("Age Calculator")
+root.geometry("600x600")
+root.configure(bg=bg_color)
+
+main_label = tk.Label(root, text="Age Calculator", bg=bg_color, fg=fg_color, font=("Helvetica", 16))
+main_label.pack(pady=(50, 20))
+
+# Create the input fields for date of birth
+day_label = tk.Label(root, text="Day", bg=bg_color, fg=fg_color, font=("Helvetica", 12))
+day_entry = tk.Entry(root, font=("Helvetica", 12), bg=bg_color, fg=fg_color, bd=2)
+month_label = tk.Label(root, text="Month", bg=bg_color, fg=fg_color, font=("Helvetica", 12))
+month_entry = tk.Entry(root, font=("Helvetica", 12), bg=bg_color, fg=fg_color, bd=2)
+year_label = tk.Label(root, text="Year", bg=bg_color, fg=fg_color, font=("Helvetica", 12))
+year_entry = tk.Entry(root, font=("Helvetica", 12), bg=bg_color, fg=fg_color, bd=2)
+
+# Create the button to calculate age
+calc_button = tk.Button(root, text="Calculate", bg=button_color, fg=fg_color, font=("Helvetica", 14), bd=0,
+                        activebackground=button_hover_color, activeforeground=fg_color, command=calculate_age)
+
+
+# Create the button to reset the fields
+reset_button = tk.Button(root, text="Reset", bg=button_color, fg=fg_color, font=("Helvetica", 14), bd=0,
+                         activebackground=button_hover_color, activeforeground=fg_color, command=reset_fields)
+
+
+# Create the label to display the age
+age_label = tk.Label(root, text="Please Enter Date", bg=bg_color, fg=fg_color, font=("Helvetica", 16))
+
+# Add the widgets to the window
+day_label.pack(pady=(50, 10))
+day_entry.pack(pady=10)
+month_label.pack(pady=10)
+month_entry.pack(pady=10)
+year_label.pack(pady=10)
+year_entry.pack(pady=10)
+calc_button.pack(pady=20)
+reset_button.pack(pady=5)
+age_label.pack(pady=10)
+
+# Run the main tkinter event loop
+root.mainloop()
